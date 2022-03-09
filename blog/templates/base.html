@@ -1,0 +1,165 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'blog/icon/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'blog/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>{% block title %} {% endblock title %}</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand-xs navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'blog:homepage' %}"><img src="{% static 'blog/icon/favicon.ico' %}" width="30" height="30" alt="">
+                    Django Blog | Sabbha</a>
+                <ul class="nav justify-content-end navbar-nav">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog:homepage' %}">Home </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog:about' %}">About</a>
+                    </li>
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog:post_create' %}">Create Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <div class="p-5 text-center bg-light">
+            <h1 class="mb-3">{% block heading %} Heading {% endblock heading %}</h1>
+            <h4 class="mb-3">
+                {% block subheading %} Subheading {% endblock subheading %}
+            </h4>
+            {% block bannerbuttons %}
+            <!-- <a class="btn btn-primary m-3" href="" role="button">Call Me</a>
+            <a class="btn btn-primary m-3" href="" role="button">Contact</a> -->
+            {% endblock bannerbuttons %}
+        </div>
+        <!-- Background image -->
+    </header>
+    <div class="container" style="min-height: 40vh;">
+        <div class="row"> 
+            
+            
+            {% if messages %}
+                {% for msg in messages %}
+                <div class="alert alert-dismissible alert-{{msg.tags}}">
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="alert"></button> -->
+                    <strong>{{ msg }}</strong>
+                  </div>
+                    
+                {% endfor %}
+                    
+            {% endif %}
+                
+            
+            {% block content %} {% endblock content %}</div>
+    </div>
+
+
+
+    <footer class="page-footer font-small bg-light ">
+
+        <div class="container text-center">
+
+            <div class="row">
+                <hr >
+                <h5 class="text-uppercase">Django Blog | Sabbha</h5>
+                    <p>
+                        Connect with me : 
+                    </p>
+                    <p>
+                        <a href="https://www.facebook.com/sabbhasachi.mondal" class="btn btn-outline-light m-2 fa fa-facebook"></a>
+                        <a href="https://twitter.com/mondal_sabbha" class="btn btn-outline-light m-2 fa fa-twitter"></a>
+                        <a href="mailto:mondalsabbha@gmail.com" class="btn btn-outline-light m-2 fa fa-google"></a>
+                        <a href="https://www.linkedin.com/in/mondal-sabbha/" class="btn btn-outline-light m-2 fa fa-linkedin"></a>
+                        <a href="https://studio.youtube.com/channel/UCzEjHfKkn_9auLTkze3baXg" class="btn btn-outline-light m-2 fa fa-youtube"></a>
+                        <a href="https://www.instagram.com/sabbha_m/" class="btn btn-outline-light m-2 fa fa-instagram"></a>
+                        <a href="https://in.pinterest.com/sabbhamondal/" class="btn btn-outline-light m-2 fa fa-pinterest"></a></a>
+                    </p>
+
+
+                <!-- <div class="col-md-3 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <!-- <div class="col-md-3 mb-md-0 mb-3">
+
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div> -->
+
+            </div>
+
+        </div>
+
+        <div class="footer-copyright text-center py-3">
+
+                &copy;
+                <span id="copyright">
+                    <script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+                </span>
+            <a href="https://twitter.com/mondal_sabbha">sabbha_mondal</a>
+        </div>
+
+    </footer>
+    
+
+</body>
+
+</html>

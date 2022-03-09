@@ -1,0 +1,41 @@
+{% extends 'base.html' %} 
+
+{% block title %}Blog | {{blog}}{% endblock title %}
+
+
+{% block heading %}
+           Blog Detail
+        {% endblock heading %}
+        {% block subheading %}
+            Something to know...
+        {% endblock subheading %}
+        
+      
+        {% block bannerbuttons %}
+        {% if blog.author == user %}
+       <a class="btn btn-outline-primary m-3" href="{% url 'blog:post_update' blog.pk %}" role="button">Edit Post</a>
+       <a class="btn btn-outline-danger m-3" href="{% url 'blog:post_delete' blog.pk %}" role="button">Delete Post</a>
+       {% endif %}
+        {% endblock bannerbuttons %}
+            
+       
+            
+        
+{% block content %}
+<hr style="border-top: 1px dotted #7b8ab8; margin-top:20px;">
+
+    <figure>
+        <blockquote class="blockquote m-3">
+            <h2>{{blog.title}}</h2>
+          <p class="mb-0">{{blog.content}} </p>
+        </blockquote>
+        <figcaption class="blockquote-footer m-3">
+            {{blog.author}} <cite title="Source Title">{{blog.post_created}}</cite>
+        </figcaption>
+      </figure>
+      <a href="{% url 'blog:homepage' %}"><< Return Back to Home</a>
+      <hr style="border-top: 1px dotted #7b8ab8">
+
+    
+{% endblock content %}
+ 

@@ -1,0 +1,48 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+
+{% block title %}Blog | {{user}} | Profile{% endblock title %}
+
+
+{% block heading %}
+           Profile Page
+        {% endblock heading %}
+        {% block subheading %}
+            Your World
+        {% endblock subheading %}
+        {% block bannerbuttons %}
+        <a class="btn btn-outline-light m-3" href="{% url 'profile_update' %}" role="button">Edit Profile</a>
+        <a class="btn btn-outline-light m-3" href="{% url 'passwordChange' %}" role="button">Change Password</a>
+        {% endblock bannerbuttons %}
+        
+        
+{% block content %}
+<div class="container justify-content p-5">
+    <div class="row">
+        <div class=" offset-md-3 col-md-6 offset-lg-3 col-lg-6">
+            <div class="card mb-3">
+                <h3 class="card-header">{{user.first_name}} {{user.last_name}}</h3>
+                <div class="card-body">
+                  <img class=" img-thumbnail" src="{{ user.profile.photo.url }}" alt="{{user}}">
+                  <h5 class="card-title mt-3">{{user.profile.bio}}</h5>
+                  <h6 class=" card-subtitle text-muted">D.O.B - {{ user.profile.birthdate }}</h6>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Contact Mail: {{user.email}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Joined: {{user.date_joined}}</li>
+                  <li class="list-group-item">Last Login: {{user.last_login}} </li>
+                </ul>
+                <div class="card-body">
+                  <!-- <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a> -->
+                </div>
+                <div class="card-footer text-muted">
+                  {{user.date_joined}} days ago
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

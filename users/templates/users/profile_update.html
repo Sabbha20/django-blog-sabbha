@@ -1,0 +1,45 @@
+{% extends 'base.html' %} 
+{% load crispy_forms_tags %}
+
+{% block title %}Blog | {{user}} | Update Profile{% endblock title %}
+
+
+{% block heading %}
+           Edit Profile
+        {% endblock heading %}
+        {% block subheading %}
+            Update Your latest here
+        {% endblock subheading %}
+        {% block bannerbuttons %}
+        <a class="btn btn-outline-light m-3" href="{% url 'profile' %}" role="button">Return Back</a> 
+        {% endblock bannerbuttons %}
+{% block content %}
+<div class="container justify-content p-5">
+    <div class="row">
+        <div class=" offset-md-3 col-md-6 offset-lg-3 col-lg-6">
+            <form  method="post" enctype="multipart/form-data"> 
+                {% csrf_token %}
+                {{user_form | crispy }}
+            <div class="form-group">
+                {{extended_profile_form | crispy }}
+            </div>
+                <div class="offset-md-4 offset-sm-4 offset-lg-4 mt-4">
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+  //  var element = document.getElementById('id_photo');
+//element.classList.add('form-control');
+//element.setAttribute("id", "formFile");
+var photo_div = document.getElementById("div_id_photo") ;
+photo_div.innerHTML = '<label for="id_photo" class=" requiredField">';
+    photo_div.innerHTML += ' Profile Picture'
+    photo_div.innerHTML += ' </label> <div class="">';
+        photo_div.innerHTML += '   <img src="{{user.profile.photo.url }}" alt="{{user}}"  class="m-4 img-responsive" style="max-height: 200px; max-width: 200px;">';
+        photo_div.innerHTML += ' <input type="file" name="photo" accept="image/*" class="clearablefileinput form-control-file form-control" id="formFile"> </div> ';
+</script>
+{% endblock content %}

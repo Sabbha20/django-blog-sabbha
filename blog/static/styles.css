@@ -1,0 +1,37 @@
+.form-group {
+  margin-top: 20px;
+}
+
+a.fa-facebook:hover {
+  background-color: #4267b2;
+  color: #ffffffff;
+}
+
+a.fa-twitter:hover {
+  background-color: #1DA1F2;
+  color: #ffffffff;
+}
+
+a.fa-google:hover {
+  background-color: #DB4437;
+  color: #ffffffff;
+}
+a.fa-linkedin:hover {
+  background-color: #0077b5;
+  color: #ffffffff;
+}
+a.fa-youtube:hover {
+  background-color: #FF0000;
+  color: #ffffffff;
+}
+a.fa-instagram:hover {
+    background: -webkit-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -o-radial-gradient(30% 107%, circle, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: #ffffffff;
+}
+a.fa-pinterest:hover {
+  background-color: #E60023;
+  color: #ffffffff;
+}
